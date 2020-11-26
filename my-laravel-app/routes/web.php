@@ -20,3 +20,8 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/index', 'TodoController@index');
+
+Route::get('/new', 'TodoController@new');
+Route::post('new', 'TodoController@post');
