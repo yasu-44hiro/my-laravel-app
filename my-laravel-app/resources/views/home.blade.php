@@ -6,15 +6,24 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
-
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
+                    {{ __('新着情報!') }}
 
-                    {{ __('You are logged in!') }}
+                    <table>
+                      <tr>
+                          <th>TODO LIST</th>
+                      </tr>
+                      @foreach($items as $item)
+                      <tr>
+                          <td><a href="">{{$item->title}}</a></td>
+                      </tr>
+                      @endforeach
+                    </table>
                 </div>
             </div>
         </div>
