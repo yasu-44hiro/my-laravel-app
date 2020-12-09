@@ -12,27 +12,22 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    {{ __('CEを選択') }}
-                    <form action="/home" method="post">
+                    {{ __('新着情報!') }}
+                    <form action="/home/find" method="post">
                     @csrf
-                    <select name="name" id="">
-                        @foreach ($items as $item)
-                    <option value="{{$item->name}}">{{$item->name}}</option>
-                        @endforeach
-                    </select>
+                    <input type="text" name="input" value="{{$input}}">
                     <input type="submit" value="find">
                     </form>
-                    @if(isset($items))
+                    @if(isset($item))
                     <table>
                       <tr>
                           <th>Data</th>
                       </tr>
                       <tr>
-                          <td><a href="">{{$items}}</a></td>
+                          <td><a href="">{{$item->getData()}}</a></td>
                       </tr>
                     </table>
                     @endif
-                    </table>
                 </div>
             </div>
         </div>

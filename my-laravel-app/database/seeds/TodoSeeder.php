@@ -12,53 +12,53 @@ class TodoSeeder extends Seeder
     public function run(){
         $param = [
             'user_id' => 1 ,
-            'title' => '1件完了する' ,
+            'product_number' => 'TCF4411' ,
             'level' => '1' ,
-            'detail' => '1日1件以上完了する',
+            'detail' => 'ノズル流調を交換する',
             'status' => 0,
         ];
         DB::table('todos')->insert($param);
         $param = [
             'user_id' => 2 ,
-            'title' => '2件完了する' ,
+            'product_number' => 'TCF4511' ,
             'level' => '2' ,
-            'detail' => '1日2件以上完了する',
+            'detail' => 'コントローラーを交換する',
             'status' => 0,
         ];
         DB::table('todos')->insert($param);
 
         $param = [
             'user_id' => 3 ,
-            'title' => '3件完了する' ,
+            'product_number' => 'TCF4711' ,
             'level' => '3' ,
-            'detail' => '1日3件以上完了する',
+            'detail' => 'バルブユニットを交換する',
             'status' => 0,
         ];
         DB::table('todos')->insert($param);
 
         $param = [
             'user_id' => 4 ,
-            'title' => '4件完了する' ,
+            'product_number' => 'TCF4713' ,
             'level' => '4' ,
-            'detail' => '1日4件以上完了する',
+            'detail' => '熱交換器を交換する',
             'status' => 0,
         ];
         DB::table('todos')->insert($param);
 
         $param = [
             'user_id' => 5 ,
-            'title' => '5件完了する' ,
+            'product_number' => 'TCF6321' ,
             'level' => '5' ,
-            'detail' => '1日5件以上完了する',
+            'detail' => '脱臭ユニットを交換する',
             'status' => 0,
         ];
         DB::table('todos')->insert($param);
 
         $param = [
             'user_id' => 6 ,
-            'title' => '6件完了する' ,
+            'product_number' => 'TCF6421' ,
             'level' => '6' ,
-            'detail' => '1日6件以上完了する',
+            'detail' => '温風ユニットを交換する',
             'status' => 0,
         ];
         DB::table('todos')->insert($param);

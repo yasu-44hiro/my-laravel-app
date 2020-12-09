@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Todo;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,9 +23,22 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $request)
+
+     public function index(Request $request)
+     {
+         $items = Todo::all();
+         return view('home', ['items =>$items']);
+     }
+
+     public function find(Request $request)
     {
-        $items = Todo::all();
-        return view('home', ['items' => $items]);
+        return view('home', ['input' => '']);
     }
+    public function search(Request $request)
+    {
+        $item = Todo::where('product_number', $request->input)->first();
+        $param = ['input' => $request->input, 'item' => $item];
+        return view('home', $param);
+    }
+
 }

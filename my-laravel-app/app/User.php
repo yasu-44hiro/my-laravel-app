@@ -36,4 +36,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function board()
+    {
+        return $this->has0ne('app\Todo');
+    }
+
+    public function getData()
+    {
+        return $this->id . ':' . $this->name . ':' . $this->product_number;
+    }
 }

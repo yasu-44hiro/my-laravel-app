@@ -16,7 +16,7 @@ class CreateTodosTable extends Migration
         Schema::create('todos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('title');
+            $table->string('product_number');
             $table->integer('level');
             $table->text('detail');
             $table->tinyInteger('status');
