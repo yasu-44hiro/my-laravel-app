@@ -16,22 +16,21 @@
                     <form action="/home" method="post">
                     @csrf
                     <select name="id" id="">
-                    <option value="">CEを選択</option>
                         @foreach ($items as $item)
                     <option value="{{$item->id}}">{{$item->name}}</option>
                         @endforeach
                     </select>
                     <input type="submit" value="find">
                     </form>
-                    @if(isset($todos))
-                    <dl>
-                      <dt>{{$items[$user-1]->name}}</dt>
-                      <dd>
-                      @foreach ($todos as $todo)
-                          <a href="/todo/detail?id={{$items[$todo->user_id - 1] ->id}}">{{$todo->product_number}}</a><br>
-                      @endforeach
-                      </dd>
-                    </dl>
+                    @if(isset($todo))
+                    <table>
+                      <tr>
+                          <th>Data</th>
+                      </tr>
+                      <tr>
+                          <td><a href="">{{$todo->product_number}}</a></td>
+                      </tr>
+                    </table>
                     @endif
                     </table>
                 </div>

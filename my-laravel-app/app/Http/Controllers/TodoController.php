@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
-
     public function find(Request $request)
     {
         $items = User::all();
@@ -18,8 +17,15 @@ class TodoController extends Controller
     public function search(Request $request)
     {
         $items = User::all();
-        $name = User::where('name', $request->name)->first();
-        $param = ['input' => $request->input, 'name' => $name, 'items' => $items];
+        $todos = User::find($request->id)->todos;
+        $user = $request->id;
+        $param = ['input' => $request->input, 'items' => $items, 'todos' => $todos, 'user' => $user];
         return view('/home', $param);
+    }
+
+    public function rest(Request $request)
+    {
+        $items = User::all();
+        return view('todo.create', ['items' => $items]);
     }
 }
