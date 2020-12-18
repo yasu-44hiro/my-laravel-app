@@ -23,7 +23,7 @@ class TodoController extends Controller
         return view('/home', $param);
     }
 
-    public function rest(Request $request)
+    public function create(Request $request)
     {
         $items = User::all();
         return view('todo.create', ['items' => $items]);

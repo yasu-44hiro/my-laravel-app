@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Todo;
+use App\User;
 
 
 class RestappController extends Controller
@@ -15,7 +16,8 @@ class RestappController extends Controller
      */
     public function index()
     {
-        //
+        $items = User::all();
+        return $items->toArray();
     }
 
     /**
@@ -37,6 +39,7 @@ class RestappController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, Todo::$rules);
         $todo = new Todo;
         $todo->user_id = $request->id;
         $todo->product_number = $request->product_number;
@@ -58,7 +61,8 @@ class RestappController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = Todo::find($id);
+        return view('rest.show', ['item' => $item]);
     }
 
     /**

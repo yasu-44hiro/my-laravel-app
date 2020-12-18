@@ -24,4 +24,4 @@ Route::get('/home', 'TodoController@find');
 Route::post('/home', 'TodoController@search');
 
 Route::resource('rest', 'RestappController');
-Route::get('/todo/create', 'TodoController@rest');
+Route::get('/todo/create', 'TodoController@create');

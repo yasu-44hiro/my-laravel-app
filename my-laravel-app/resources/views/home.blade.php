@@ -28,7 +28,7 @@
                       <dt>{{$items[$user-1]->name}}</dt>
                       <dd>
                       @foreach ($todos as $todo)
-                          <a href="/todo/detail?id={{$items[$todo->user_id - 1] ->id}}">{{$todo->product_number}}</a><br>
+                          <a href="/rest/{{$todo->id}}">{{$todo->product_number}}</a><br>
                       @endforeach
                       </dd>
                     </dl>

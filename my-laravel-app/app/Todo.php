@@ -15,4 +15,9 @@ class Todo extends Model
     'detail' => 'required',
     'status' => 'boolean',
   );
+
+  public function user()
+  {
+    return $this->belongsTo('App\User');
+  }
 }

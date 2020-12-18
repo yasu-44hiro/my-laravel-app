@@ -1,7 +1,7 @@
 <form action="/rest" method="post">
     <dl>
       @csrf
-      <dt></dt>
+      <dt>CE</dt>
       <dd>
         <select name="id" id="">
         <option value="">CEを選択</option>
@@ -24,5 +24,6 @@
       </dd>
     </dl>
     <p><input type="submit" value="send"></p>
+    <p><a href="/home">&laquo;戻る</a></p>
 
 </form>
