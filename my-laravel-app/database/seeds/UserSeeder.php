@@ -11,14 +11,22 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //一般ユーザー（ログイン用)
+        //管理者（ログイン用)
         factory(App\User::class)
             ->create([
-                'name' => '44hiro',
-                'email' => '44hiro@example.com',
-                'password' => bcrypt('password')
+                'name' => '吉廣泰則',
+                'email' => 'yoshihiro@example.com',
+                'password' => bcrypt('password'),
+                'role' => 'owner'
             ]);
         // 一般ユーザー
+        factory(App\User::class)
+            ->create([
+                'name' => '立花春雄',
+                'email' => 'haruo@example.com',
+                'password' => bcrypt('password'),
+                'role' => 'customer'
+            ]);
         factory(App\User::class, 10)->create();
     }
 }

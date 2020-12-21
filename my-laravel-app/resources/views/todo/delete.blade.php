@@ -13,13 +13,18 @@
                         </div>
                     @endif
 
+                    <form action="/rest/{{$item->id}}" method="post">
+                    @method('DELETE')
+                    @csrf
                     <h2>{{$item->product_number}}</h2>
                     <ul>
                       <li>難易度:{{$item->level}}</li>
                       <li>詳細:{{$item->detail}}</li>
                       <li>状態:{{$item->status}}(末完了:0  完了:1)</li>
                     </ul>
+                    <input type="submit" value="send">
                     <input type="button" onclick="history.back()" value="戻る">
+
                 </div>
             </div>
         </div>

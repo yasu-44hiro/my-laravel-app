@@ -16,8 +16,8 @@ class Todo extends Model
     'status' => 'boolean',
   );
 
-  public function user()
+  public function todo()
   {
-    return $this->belongsTo('App\User');
+    return $this->belongsTo('App\User', 'user_id');
   }
 }

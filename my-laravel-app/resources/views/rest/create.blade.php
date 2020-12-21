@@ -23,7 +23,7 @@
         </select>
       </dd>
     </dl>
-    <p><input type="submit" value="send"></p>
-    <p><a href="/home">&laquo;戻る</a></p>
+    <input type="submit" value="send">
+    <input type="button" onclick="history.back()" value="戻る">
 
 </form>

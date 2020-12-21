@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['middleware' => 'owner_auth'], function () {
+
+    Route::get('/owner', 'TodoController@find');
+
+});
+
 Route::get('/', function () {
     return view('top');
 });
@@ -21,7 +27,8 @@ Auth::routes();
 
 //Route::get('/home', 'TodoController@index');
 Route::get('/home', 'TodoController@find');
-Route::post('/home', 'TodoController@search');
+Route::post('/todo/index', 'TodoController@search');
 
 Route::resource('rest', 'RestappController');
 Route::get('/todo/create', 'TodoController@create');
+Route::get('/todo/delete', 'TodoController@delete');

@@ -74,6 +74,8 @@ class RestappController extends Controller
     public function edit($id)
     {
         //
+        $item = Todo::find($id);
+        return view('rest.edit', ['item' => $item]);
     }
 
     /**
@@ -86,6 +88,19 @@ class RestappController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, Todo::$rules);
+        dd($request->id);
+        $todo = Todo::find($request->id);
+        $todo->user_id = $request->id;
+        $todo->product_number = $request->product_number;
+        $todo->level = $request->level;
+        $todo->detail = $request->detail;
+        $todo->status = $request->status;
+        $todo->save();
+        //$form = $request->all();
+        //unset($form['_token']);
+        //$todo->fill($form)->save();
+        return redirect('/home');
     }
 
     /**
@@ -97,5 +112,8 @@ class RestappController extends Controller
     public function destroy($id)
     {
         //
+        Todo::find($id)->delete();
+        return redirect('/home');
+
     }
 }
