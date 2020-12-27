@@ -1,17 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.simple')
 
 @section('content')
-<div class="container">
+<div class="container-sm">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <h1 class="card-header">{{$item->todo->name}}</h1>
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
                     @if (count($errors) > 0)
                     <div>
@@ -23,31 +15,30 @@
                     </div>
                     @endif
 
-                    <h2>編集</h2>
                     <form action="/rest/{{$item->id}}" method="post">
                     @method('PATCH')
-                    <dl>
-                      @csrf
-                      <input type="hidden" name="id" value="{{$item->user_id}}">
-                      <dt>品番</dt>
-                      <dd><input type="text" name="product_number" value="{{$item->product_number}}"></dd>
-                      <dt>難易度</dt>
-                      <dd><input type="number" name="level" value="{{$item->level}}"></dd>
-                      <dt>内容</dt>
-                      <dd><input type="text" name="detail" value="{{$item->detail}}"></dd>
-                      <dt>未完了：0　完了：1</dt>
-                      <dd>
-                        <select name="status" >
-                          <option value="0">0</option>
-                          <option value="1">1</option>
-                        </select>
-                      </dd>
-                    </dl>
-                    <input type="submit" value="send">
-                    <input type="button" onclick="history.back()" value="戻る">
-
+                    @csrf
+                        <dl>
+                          <dt></dt>
+                          <dd><input type="hidden" name="id" value="{{Auth::user()->id}}"></dd>
+                          <dt class="mb-3"><label for="category_name" class="form-label">カテゴリー</label></dt>
+                          <dd>
+                                  <div class="input-group">
+                                        <select name="category_id" id="category_id" class="form-select" aria-label="Default select example">
+                                            <option selected>カテゴリーを選択</option>
+                                            @foreach ($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                            @endforeach
+                                        </select>
+                                  </div>
+                          <dt class="mb-3"><label for="title" class="form-label">タイトル</label></dt>
+                          <dd><input type="text" id="title" name="title" class="form-control" value="{{$item->title}}"></dd>
+                          <dt><label for="content">内容</label></dt>
+                          <dd class="form-floating"><textarea class="form-control" id="content" name="content" style="height: 100px">{{$item->content}}</textarea></dd>
+                        </dl>
+                        <button class="btn btn-primary" type="submit">更新</button>
+                        <a href="/rest/{{$item->user_id}}"><button class="btn btn-primary" type="button" >キャンセル</button></a>
                     </form>
-
                 </div>
             </div>
         </div>

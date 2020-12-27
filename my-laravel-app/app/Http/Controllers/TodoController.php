@@ -4,33 +4,35 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Todo;
+use App\Category;
+use App\Post;
 
 use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
-    public function find(Request $request)
-    {
-        $items = User::all();
-        return view('/home', ['items' => $items]);
-    }
-
     public function search(Request $request)
     {
-        $item = User::find($request->id);
-        return view('todo.index', ['item' => $item]);
+        $params = Category::find($request->id);
+        $items = Category::all();
+        return view('rest.index', ['params' => $params , 'items' => $items]);
     }
 
-    public function create(Request $request)
+    public function rest(Request $request)
     {
-        $items = User::all();
-        return view('todo.create', ['items' => $items]);
+        $items = Category::all();
+        return view('todo.create' , ['items' => $items]);
     }
 
     public function delete(Request $request)
     {
         $item = Todo::find($request->id);
         return view('todo.delete', ['item' => $item]);
+    }
+    public function detail(Request $request)
+    {
+        $item = post::find($request->id);
+        return view('todo.detail', ['item' => $item]);
     }
 
 }

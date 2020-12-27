@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>My Supplement</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -20,6 +20,19 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+
+
+  <nav>
+    <ul class="nav justify-content-end">
+
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('register') }}">新規作成</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('login') }}">ログイン</a>
+    </li>
+  </ul>
+  </nav>
   @yield('content')
 
   <!-- Scripts -->

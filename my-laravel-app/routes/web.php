@@ -27,8 +27,9 @@ Auth::routes();
 
 //Route::get('/home', 'TodoController@index');
 Route::get('/home', 'TodoController@find');
-Route::post('/todo/index', 'TodoController@search');
+Route::post('/rest/index', 'TodoController@search');
 
 Route::resource('rest', 'RestappController');
-Route::get('/todo/create', 'TodoController@create');
+Route::get('/todo/create', 'TodoController@rest');
+Route::get('/todo/detail', 'TodoController@detail');
 Route::get('/todo/delete', 'TodoController@delete');

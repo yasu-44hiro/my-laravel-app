@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Todo;
+
 use App\User;
+use App\Todo;
+use App\Post;
+use App\Category;
 
 
 class RestappController extends Controller
@@ -16,8 +19,8 @@ class RestappController extends Controller
      */
     public function index()
     {
-        $items = User::all();
-        return $items->toArray();
+        $items = Category::all();
+        return view('rest.index', ['items' => $items]);
     }
 
     /**
@@ -27,7 +30,7 @@ class RestappController extends Controller
      */
     public function create()
     {
-        $items = User::all();
+        $items = Category::all();
         return view('rest.create', ['items' => $items]);
     }
 
@@ -39,18 +42,14 @@ class RestappController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, Todo::$rules);
-        $todo = new Todo;
-        $todo->user_id = $request->id;
-        $todo->product_number = $request->product_number;
-        $todo->level = $request->level;
-        $todo->detail = $request->detail;
-        $todo->status = $request->status;
-        $todo->save();
-        //$form = $request->all();
-        //unset($form['_token']);
-        //$todo->fill($form)->save();
-        return redirect('/home');
+        $this->validate($request, Post::$rules);
+        $post = new Post;
+        $post->user_id = $request->user_id;
+        $post->category_id = $request->category_id;
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->save();
+        return redirect('/rest');
         }
 
     /**
@@ -61,7 +60,7 @@ class RestappController extends Controller
      */
     public function show($id)
     {
-        $item = Todo::find($id);
+        $item = User::find($id);
         return view('rest.show', ['item' => $item]);
     }
 
@@ -73,9 +72,9 @@ class RestappController extends Controller
      */
     public function edit($id)
     {
-        //
-        $item = Todo::find($id);
-        return view('rest.edit', ['item' => $item]);
+        $categories = Category::all();
+        $item = Post::find($id);
+        return view('rest.edit', ['categories' => $categories , 'item' => $item]);
     }
 
     /**
@@ -87,20 +86,13 @@ class RestappController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $this->validate($request, Todo::$rules);
-        dd($request->id);
-        $todo = Todo::find($request->id);
-        $todo->user_id = $request->id;
-        $todo->product_number = $request->product_number;
-        $todo->level = $request->level;
-        $todo->detail = $request->detail;
-        $todo->status = $request->status;
-        $todo->save();
-        //$form = $request->all();
-        //unset($form['_token']);
-        //$todo->fill($form)->save();
-        return redirect('/home');
+        $this->validate($request, Post::$rules);
+        $post = Post::find($id);
+        $post->category_id = $request->category_id;
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->save();
+        return redirect('/rest/$request->id');
     }
 
     /**
@@ -112,8 +104,8 @@ class RestappController extends Controller
     public function destroy($id)
     {
         //
-        Todo::find($id)->delete();
-        return redirect('/home');
+        Post::find($id)->delete();
+        return redirect('/rest');
 
     }
 }
