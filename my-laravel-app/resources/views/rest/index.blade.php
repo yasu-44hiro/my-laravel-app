@@ -7,7 +7,7 @@
             <form action="/rest/index" method="post">
               <div class="input-group">
                     @csrf
-                    <select name="id" class="form-select" aria-label="Default select example">
+                    <select name="id" class="form-select mb-4" aria-label="Default select example">
                         <option selected>カテゴリーを選択</option>
                         @foreach ($items as $item)
                         <option value="{{$item->id}}">{{$item->category_name}}</option>
@@ -20,7 +20,7 @@
             </form>
             @if (isset($params))
             @foreach ($params->categories as $category)
-            <div class="card">
+            <div class="card mb-4">
                   <a class="card-body" href="/todo/detail?id={{$category->id}}">
                       <dl>
                           <dt class="btn btn-warning" >{{$params->category_name}}</dt>
@@ -38,7 +38,7 @@
 
             @foreach ($items as $item)
             @foreach ($item->categories as $category)
-            <div class="card">
+            <div class="card mb-4">
                 <a class="card-body" href="/todo/detail?id={{$category->id}}">
                     <dl>
                         <dt class="btn btn-warning">{{$item->category_name}}</dt>

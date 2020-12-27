@@ -92,7 +92,7 @@ class RestappController extends Controller
         $post->title = $request->title;
         $post->content = $request->content;
         $post->save();
-        return redirect('/rest/$request->id');
+        return redirect('/rest');
     }
 
     /**
@@ -103,9 +103,8 @@ class RestappController extends Controller
      */
     public function destroy($id)
     {
-        //
         Post::find($id)->delete();
-        return redirect('/rest');
+        return redirect(url()->previous());
 
     }
 }

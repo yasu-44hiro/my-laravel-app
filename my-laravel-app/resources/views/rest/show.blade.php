@@ -14,6 +14,7 @@
                         <a href="/rest/{{$user->id}}/edit" class="btn btn-primary">編集</a>
                         <form action="/rest/{{$user->id}}" method="POST">
                             @method('DELETE')
+                            @csrf
                             <input type="hidden" name="id" value="{{$user->id}}">
                             <input class="btn btn-primary" type="submit" value="削除">
                         </form>
