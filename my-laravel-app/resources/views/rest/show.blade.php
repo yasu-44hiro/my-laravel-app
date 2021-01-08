@@ -7,8 +7,8 @@
           @foreach ($item->users as $user)
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-subtitle mb-2 btn btn-warning btn-sm">{{$user->post->category_name}}</h6>
-                    <h5 class="card-title">{{$user->title}}</h5>
+                    <p class="card-subtitle mb-2 btn btn-warning btn-sm">{{$user->post->category_name}}</p>
+                    <p class="card-title">{{$user->title}}</p>
                     <p class="card-text">{{$user->content}}</p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <a href="/rest/{{$user->id}}/edit" class="btn btn-primary">編集</a>
@@ -22,7 +22,7 @@
                 </div>
             </div>
             @endforeach
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <div class="d-flex mt-4">
                 <button class="btn btn-primary me-md-2" type="button" onclick="history.back()">前の画面へ</button>
                 <a href="{{ url('/rest') }}"><button class="btn btn-primary" type="button" >一覧へ</button></a>
             </div>

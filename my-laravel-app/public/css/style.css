@@ -1,7 +1,8 @@
 .hero{
   background-image: url(../images/crossfit.jpg);
-  background-size: no-repeat;
   background-size: cover;
+}
 
+.text-shadow{
 
 }

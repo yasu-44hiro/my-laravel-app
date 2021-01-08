@@ -34,5 +34,4 @@ class TodoController extends Controller
         $item = post::find($request->id);
         return view('todo.detail', ['item' => $item]);
     }
-
 }

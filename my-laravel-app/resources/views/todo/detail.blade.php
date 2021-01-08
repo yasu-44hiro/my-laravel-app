@@ -4,15 +4,15 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card mt-5">
                 <div class="card-body">
-                    <h6 class="card-subtitle mb-2 btn btn-warning btn-sm">{{$item->post->category_name}}</h6>
-                    <h5 class="card-title">{{$item->title}}</h5>
+                    <p class="card-subtitle mb-2 btn btn-warning btn-sm mb-3">{{$item->post->category_name}}</p>
+                    <p class="card-title h4">{{$item->title}}</p>
                     <p class="card-text">{{$item->content}}</p>
                 </div>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn btn-primary me-md-2" type="button" onclick="history.back()">前の画面へ</button>
+                <button class="btn btn-primary me-md-2 mt-4" type="button" onclick="history.back()">前の画面へ</button>
             </div>
         </div>
     </div>

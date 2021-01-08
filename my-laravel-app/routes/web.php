@@ -33,3 +33,4 @@ Route::resource('rest', 'RestappController');
 Route::get('/todo/create', 'TodoController@rest');
 Route::get('/todo/detail', 'TodoController@detail');
 Route::get('/todo/delete', 'TodoController@delete');
+Route::get('/login/guest', 'Auth\LoginController@guestLogin');
