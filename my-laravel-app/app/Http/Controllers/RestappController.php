@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use App\User;
 use App\Todo;
@@ -19,8 +21,13 @@ class RestappController extends Controller
      */
     public function index()
     {
+        if(Auth::check()){
         $items = Category::all();
+        //$item =DB::table('categories') ->simplePaginate(5);
         return view('rest.index', ['items' => $items]);
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -30,8 +37,12 @@ class RestappController extends Controller
      */
     public function create()
     {
+        if(Auth::check()){
         $items = Category::all();
         return view('rest.create', ['items' => $items]);
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -60,8 +71,12 @@ class RestappController extends Controller
      */
     public function show($id)
     {
+        if(Auth::check()){
         $item = User::find($id);
         return view('rest.show', ['item' => $item]);
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
