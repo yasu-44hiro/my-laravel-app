@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Like;
 
 class Post extends Model
 {
@@ -23,12 +24,8 @@ class Post extends Model
     {
         return $this->belongsTo('App\User' , 'user_id');
     }
-    public function likes()
+    public function favorite_users()
     {
-        return $this->hasMany('App\Like');
-    }
-    //後でViewで使う、いいねされているかを判定するメソッド。
-    public function isLikedBy($user): bool {
-        return Like::where('user_id', $user->id)->where('review_id', $this->id)->first() !==null;
+            return $this->belongsToMany('App\User','likes','post_id','user_id')->withTimestamps();
     }
 }

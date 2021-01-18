@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Review;
 
 use App\User;
 use App\Todo;
 use App\Post;
 use App\Category;
+use App\Like;
 
 
 class RestappController extends Controller
@@ -19,12 +21,12 @@ class RestappController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if(Auth::check()){
         $items = Category::all();
-        //$item =DB::table('categories') ->simplePaginate(5);
-        return view('rest.index', ['items' => $items]);
+        $post = Post::all();
+        return view('rest.index', ['items' => $items , 'post' => $post]);
         } else {
             return redirect('/');
         }

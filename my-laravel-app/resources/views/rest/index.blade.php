@@ -54,16 +54,39 @@
                         <p class="mb-0 h6 text-black-50">{{$category->user->name}}</p>
                         <p class="text-right"><time datetime="{{$category->created_at}}">{{date('Y年m月d日' , strtotime($category->created_at))}}</time></p>
                     </div>
+
                 </a>
+
+              @if (Auth::id() != $category->user->id)
+
+    @if (Auth::user()->is_favorite($category->id))
+
+        {!! Form::open(['route' => ['likes.unfavorite', $category->id], 'method' => 'delete']) !!}
+            {!! Form::submit('いいね！を外す', ['class' => "button btn btn-warning"]) !!}
+        {!! Form::close() !!}
+
+    @else
+
+        {!! Form::open(['route' => ['likes.favorite', $category->id]]) !!}
+            {!! Form::submit('いいね！を付ける', ['class' => "button btn btn-success"]) !!}
+        {!! Form::close() !!}
+
+    @endif
+
+@endif
             </div>
             @endforeach
             @endforeach
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
             </div>
+
+
             @endif
 
 
         </div>
     </div>
 </div>
+
 @endsection

@@ -13,19 +13,15 @@ class CreateLikesTable extends Migration
      */
     public function up()
     {
-        chema::create('likes', function (Blueprint $table) {
-            $table->id(); //bigIncrements('id')と同じ
-            $table->timestamps(); //s複数形でcreated_atとupdated_atを生成
-
-            $table->foreignId('user_id') //usersテーブルの外部キー設定
-                ->constrained() //userテーブルのidカラムを参照するconstrainedメソッド
-                ->onDelete('cascade'); //削除時のオプション
-
-            $table->foreignId('review_id') //同じことをreviewsテーブルとも
-                ->constrained()
-                ->onDelete('cascade');
+        Schema::create('likes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id')->unsigned()->index();
+            $table->integer('post_id')->unsigned()->index();
+            $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->unique(['user_id','post_id']);
         });
-
     }
 
     /**

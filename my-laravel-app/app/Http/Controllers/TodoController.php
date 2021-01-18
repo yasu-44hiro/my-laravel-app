@@ -6,6 +6,7 @@ use App\User;
 use App\Todo;
 use App\Category;
 use App\Post;
+use App\Like;
 
 use Illuminate\Http\Request;
 
@@ -24,10 +25,16 @@ class TodoController extends Controller
         return view('todo.create' , ['items' => $items]);
     }
 
-    public function delete(Request $request)
+    public function store(Request $request, $id)
     {
-        $item = Todo::find($request->id);
-        return view('todo.delete', ['item' => $item]);
+            Auth::user()->favorite($id);
+            return back();
+    }
+
+    public function destroy($id)
+    {
+            Auth::user()->unfavorite($id);
+            return back();
     }
     public function detail(Request $request)
     {

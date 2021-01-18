@@ -45,8 +45,38 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Post' , 'user_id');
     }
-    public function likes()
+
+    public function favorites()
     {
-        return $this->hasMany('App\Like');
+        return $this->belongsToMany('App\Post', 'likes', 'user_id', 'posts_id')->withTimestamps();
+    }
+
+    public function favorite($movieId)
+    {
+        $exist = $this->is_favorite($movieId);
+
+        if($exist){
+            return false;
+        }else{
+            $this->favorites()->attach($movieId);
+            return true;
+        }
+    }
+
+    public function unfavorite($movieId)
+    {
+        $exist = $this->is_favorite($movieId);
+
+        if($exist){
+            $this->favorites()->detach($movieId);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function is_favorite($movieId)
+    {
+        return $this->favorites()->where('movie_id',$movieId)->exists();
     }
 }
