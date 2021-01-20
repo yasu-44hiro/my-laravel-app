@@ -48,7 +48,7 @@ class User extends Authenticatable
 
     public function favorites()
     {
-        return $this->belongsToMany('App\Post', 'likes', 'user_id', 'posts_id')->withTimestamps();
+        return $this->belongsToMany('App\Post', 'likes', 'user_id', 'post_id')->withTimestamps();
     }
 
     public function favorite($movieId)
@@ -77,6 +77,6 @@ class User extends Authenticatable
 
     public function is_favorite($movieId)
     {
-        return $this->favorites()->where('movie_id',$movieId)->exists();
+        return $this->favorites()->where('post_id',$movieId)->exists();
     }
 }

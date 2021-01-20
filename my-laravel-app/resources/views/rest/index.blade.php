@@ -23,16 +23,27 @@
             @if (isset($params))
             @foreach ($params->categories as $category)
             <div class="card ">
-                  <a class="card-body text-dark" href="/todo/detail?id={{$category->id}}">
-                      <dl>
-                          <dt class="btn btn-warning btn-sm mb-2" >{{$params->category_name}}</dt>
-                          <dd class="h5">{{$category->title}}</dd>
-                      </dl>
-                      <div class="d-flex justify-content-between align-items-end">
-                        <p class="mb-0 h6 text-black-50">{{$category->user->name}}</p>
-                        <p class="text-right"><time datetime="{{$category->created_at}}">{{date('Y年m月d日' , strtotime($category->created_at))}}</time></p>
-                    </div>
-                    </a>
+                <a class="card-body text-dark" href="/todo/detail?id={{$category->id}}">
+                    <dl>
+                        <dt class="btn btn-warning btn-sm mb-2" >{{$params->category_name}}</dt>
+                        <dd class="h5">{{$category->title}}</dd>
+                    </dl>
+                    <div class="d-flex justify-content-between align-items-end">
+                      <p class="mb-0 h6 text-black-50">{{$category->user->name}}</p>
+                      <p class="text-right"><time datetime="{{$category->created_at}}">{{date('Y年m月d日' , strtotime($category->created_at))}}</time></p>
+                  </div>
+                  </a>
+                  @if (Auth::id() != $category->user->id)
+                      @if (Auth::user()->is_favorite($category->id))
+                          {!! Form::open(['route' => ['favorites.unfavorite', $category->id], 'method' => 'delete']) !!}
+                              {!! Form::submit('いいね！を外す', ['class' => "button btn btn-warning"]) !!}
+                          {!! Form::close() !!}
+                      @else
+                          {!! Form::open(['route' => ['favorites.favorite', $category->id]]) !!}
+                              {!! Form::submit('いいね！を付ける', ['class' => "button btn btn-success"]) !!}
+                          {!! Form::close() !!}
+                      @endif
+                  @endif
             </div>
             @endforeach
             <div class="d-frex mt-4">
@@ -40,8 +51,6 @@
                 <a href="{{ url('/rest') }}"><button class="btn btn-primary" type="button" >一覧へ</button></a>
             </div>
             @else
-
-
             @foreach ($items as $item)
             @foreach ($item->categories as $category)
             <div class="card ">
@@ -54,37 +63,22 @@
                         <p class="mb-0 h6 text-black-50">{{$category->user->name}}</p>
                         <p class="text-right"><time datetime="{{$category->created_at}}">{{date('Y年m月d日' , strtotime($category->created_at))}}</time></p>
                     </div>
-
                 </a>
-
               @if (Auth::id() != $category->user->id)
-
-    @if (Auth::user()->is_favorite($category->id))
-
-        {!! Form::open(['route' => ['likes.unfavorite', $category->id], 'method' => 'delete']) !!}
-            {!! Form::submit('いいね！を外す', ['class' => "button btn btn-warning"]) !!}
-        {!! Form::close() !!}
-
-    @else
-
-        {!! Form::open(['route' => ['likes.favorite', $category->id]]) !!}
-            {!! Form::submit('いいね！を付ける', ['class' => "button btn btn-success"]) !!}
-        {!! Form::close() !!}
-
-    @endif
-
-@endif
+                  @if (Auth::user()->is_favorite($category->id))
+                      {!! Form::open(['route' => ['favorites.unfavorite', $category->id], 'method' => 'delete']) !!}
+                          {!! Form::submit('いいね！を外す', ['class' => "button btn btn-warning"]) !!}
+                      {!! Form::close() !!}
+                  @else
+                      {!! Form::open(['route' => ['favorites.favorite', $category->id]]) !!}
+                          {!! Form::submit('いいね！を付ける', ['class' => "button btn btn-success"]) !!}
+                      {!! Form::close() !!}
+                  @endif
+              @endif
             </div>
             @endforeach
             @endforeach
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-
-            </div>
-
-
             @endif
-
-
         </div>
     </div>
 </div>

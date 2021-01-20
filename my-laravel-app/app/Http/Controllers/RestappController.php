@@ -26,6 +26,7 @@ class RestappController extends Controller
         if(Auth::check()){
         $items = Category::all();
         $post = Post::all();
+
         return view('rest.index', ['items' => $items , 'post' => $post]);
         } else {
             return redirect('/');

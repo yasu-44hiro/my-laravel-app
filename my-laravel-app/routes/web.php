@@ -25,18 +25,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/home', 'TodoController@index');
-Route::get('/home', 'TodoController@find');
-Route::post('/rest/index', 'TodoController@search');
 
 Route::resource('rest', 'RestappController');
+Route::post('/rest/index', 'TodoController@search');
 Route::get('/todo/create', 'TodoController@rest');
 Route::get('/todo/detail', 'TodoController@detail');
 Route::get('/todo/delete', 'TodoController@delete');
-Route::get('/login/guest', 'Auth\LoginController@guestLogin');
 
-Route::get('/reply/like/{id}', 'RepliesController@like')->name('reply.like');
-Route::get('/reply/unlike/{id}', 'RepliesController@unlike')->name('reply.unlike');
 Route::group(['middleware'=>'auth'],function(){
     Route::group(['prefix'=>'posts/{id}'],function(){
        Route::post('favorite','TodoController@store')->name('favorites.favorite');
