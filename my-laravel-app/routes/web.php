@@ -25,12 +25,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
+Route::post('/todo/index', 'TodoController@search');
 Route::resource('rest', 'RestappController');
-Route::post('/rest/index', 'TodoController@search');
 Route::get('/todo/create', 'TodoController@rest');
+Route::get('/todo/index', 'TodoController@index');
 Route::get('/todo/detail', 'TodoController@detail');
 Route::get('/todo/delete', 'TodoController@delete');
+Route::get('/login/guest', 'Auth\LoginController@guestLogin');
 
 Route::group(['middleware'=>'auth'],function(){
     Route::group(['prefix'=>'posts/{id}'],function(){

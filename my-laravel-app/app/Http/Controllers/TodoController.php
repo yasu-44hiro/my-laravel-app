@@ -14,11 +14,22 @@ use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
+    public function index(Request $request)
+    {
+        if(Auth::check()){
+        $items = Category::all();
+        $post = Post::all();
+
+        return view('todo.index', ['items' => $items , 'post' => $post]);
+        } else {
+            return redirect('/');
+        }
+    }
     public function search(Request $request)
     {
         $params = Category::find($request->id);
         $items = Category::all();
-        return view('rest.index', ['params' => $params , 'items' => $items]);
+        return view('todo.index', ['params' => $params , 'items' => $items]);
     }
 
     public function rest(Request $request)

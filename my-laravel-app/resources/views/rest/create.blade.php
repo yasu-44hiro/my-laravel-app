@@ -19,5 +19,5 @@
       <dd class="form-floating"><textarea class="form-control" id="content" name="content" style="height: 100px">{{old('content')}}</textarea></dd>
     </dl>
     <button class="btn btn-primary" type="submit">投稿</button>
-    <a href="{{ url('/rest') }}"><button class="btn btn-primary" type="button" >キャンセル</button></a>
+    <a href="{{ url('/todo/index') }}"><button class="btn btn-primary" type="button" >キャンセル</button></a>
 </form>

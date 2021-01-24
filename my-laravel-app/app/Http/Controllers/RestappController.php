@@ -63,7 +63,7 @@ class RestappController extends Controller
         $post->title = $request->title;
         $post->content = $request->content;
         $post->save();
-        return redirect('/rest');
+        return redirect('/todo/index');
         }
 
     /**
@@ -110,7 +110,7 @@ class RestappController extends Controller
         $post->title = $request->title;
         $post->content = $request->content;
         $post->save();
-        return redirect('/rest');
+        return redirect('/todo/index');
     }
 
     /**
@@ -119,7 +119,7 @@ class RestappController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request , $id)
     {
         Post::find($id)->delete();
         return redirect(url()->previous());

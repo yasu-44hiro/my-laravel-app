@@ -46,7 +46,7 @@ class LoginController extends Controller
     $password = 'hogehoge';
 
     if (Auth::attempt(['email' => $email, 'password' => $password])) {
-        return redirect('/rest');
+        return redirect('/todo/index');
     }
 
     return redirect('/');

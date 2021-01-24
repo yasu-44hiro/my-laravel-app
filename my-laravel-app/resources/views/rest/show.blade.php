@@ -5,6 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
           @foreach ($item->users as $user)
+
             <div class="card">
                 <div class="card-body">
                     <p class="card-subtitle mb-2 btn btn-warning btn-sm">{{$user->post->category_name}}</p>
@@ -24,7 +25,7 @@
             @endforeach
             <div class="d-flex mt-4">
                 <button class="btn btn-primary me-md-2" type="button" onclick="history.back()">前の画面へ</button>
-                <a href="{{ url('/rest') }}"><button class="btn btn-primary" type="button" >一覧へ</button></a>
+                <a href="{{ url('/todo/index') }}"><button class="btn btn-primary" type="button" >一覧へ</button></a>
             </div>
         </div>
     </div>
