@@ -4,8 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-          @foreach ($item->users as $user)
-
+            @foreach ($item->users as $user)
             <div class="card">
                 <div class="card-body">
                     <p class="card-subtitle mb-2 btn btn-warning btn-sm">{{$user->post->category_name}}</p>

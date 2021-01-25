@@ -5,9 +5,8 @@
 <div class="container-sm">
     <div class="row justify-content-center">
         <div class="col-md-8">
-
             <form action="/rest/index" method="post">
-              <div class="input-group">
+                <div class="input-group">
                     @csrf
                     <select name="id" class="form-select mb-4 mt-4" aria-label="Default select example">
                         <option selected>カテゴリーを選択</option>
@@ -18,7 +17,7 @@
                     <span class="input-group-btn mt-4">
                     <button class="btn btn-primary" type="submit">検索</button>
                     </span>
-              </div>
+                </div>
             </form>
             @if (isset($params))
             @foreach ($params->categories as $category)
@@ -29,21 +28,21 @@
                         <dd class="h5">{{$category->title}}</dd>
                     </dl>
                     <div class="d-flex justify-content-between align-items-end">
-                      <p class="mb-0 h6 text-black-50">{{$category->user->name}}</p>
-                      <p class="text-right"><time datetime="{{$category->created_at}}">{{date('Y年m月d日' , strtotime($category->created_at))}}</time></p>
-                  </div>
-                  </a>
-                  @if (Auth::id() != $category->user->id)
-                      @if (Auth::user()->is_favorite($category->id))
-                          {!! Form::open(['route' => ['favorites.unfavorite', $category->id], 'method' => 'delete']) !!}
-                              {!! Form::submit('いいね！を外す', ['class' => "button btn btn-warning"]) !!}
-                          {!! Form::close() !!}
-                      @else
-                          {!! Form::open(['route' => ['favorites.favorite', $category->id]]) !!}
-                              {!! Form::submit('いいね！を付ける', ['class' => "button btn btn-success"]) !!}
-                          {!! Form::close() !!}
-                      @endif
-                  @endif
+                        <p class="mb-0 h6 text-black-50">{{$category->user->name}}</p>
+                        <p class="text-right"><time datetime="{{$category->created_at}}">{{date('Y年m月d日' , strtotime($category->created_at))}}</time></p>
+                    </div>
+                </a>
+                @if (Auth::id() != $category->user->id)
+                @if (Auth::user()->is_favorite($category->id))
+                    {!! Form::open(['route' => ['favorites.unfavorite', $category->id], 'method' => 'delete']) !!}
+                        {!! Form::submit('いいね！を外す', ['class' => "button btn btn-warning"]) !!}
+                    {!! Form::close() !!}
+                @else
+                    {!! Form::open(['route' => ['favorites.favorite', $category->id]]) !!}
+                        {!! Form::submit('いいね！を付ける', ['class' => "button btn btn-success"]) !!}
+                    {!! Form::close() !!}
+                @endif
+                @endif
             </div>
             @endforeach
             <div class="d-frex mt-4">
@@ -64,17 +63,17 @@
                         <p class="text-right"><time datetime="{{$category->created_at}}">{{date('Y年m月d日' , strtotime($category->created_at))}}</time></p>
                     </div>
                 </a>
-              @if (Auth::id() != $category->user->id)
-                  @if (Auth::user()->is_favorite($category->id))
-                      {!! Form::open(['route' => ['favorites.unfavorite', $category->id], 'method' => 'delete']) !!}
-                          {!! Form::submit('いいね！を外す', ['class' => "button btn btn-warning"]) !!}
-                      {!! Form::close() !!}
-                  @else
-                      {!! Form::open(['route' => ['favorites.favorite', $category->id]]) !!}
-                          {!! Form::submit('いいね！を付ける', ['class' => "button btn btn-success"]) !!}
-                      {!! Form::close() !!}
-                  @endif
-              @endif
+            @if (Auth::id() != $category->user->id)
+            @if (Auth::user()->is_favorite($category->id))
+                {!! Form::open(['route' => ['favorites.unfavorite', $category->id], 'method' => 'delete']) !!}
+                    {!! Form::submit('いいね！を外す', ['class' => "button btn btn-warning"]) !!}
+                {!! Form::close() !!}
+            @else
+                {!! Form::open(['route' => ['favorites.favorite', $category->id]]) !!}
+                    {!! Form::submit('いいね！を付ける', ['class' => "button btn btn-success"]) !!}
+                {!! Form::close() !!}
+            @endif
+            @endif
             </div>
             @endforeach
             @endforeach

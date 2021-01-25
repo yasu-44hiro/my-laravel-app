@@ -7,7 +7,6 @@
       <p class="mt-5 hero_text h3">お気に入りのSupplementをシェアしよう</p>
       <p class="text-center mt-5"><a href="{{ route('login') }}" type="button" class="btn btn-secondary btn-lg " >始める</a></p>
       <p class="text-center mt-5"><a href="/login/guest" type="button" class="btn btn-secondary btn-lg " >ゲストで始める</a></p>
-</button>
     </div>
-  </div>
+</div>
 @endsection

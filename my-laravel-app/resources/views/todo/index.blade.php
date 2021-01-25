@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <form action="/todo/index" method="post">
-              <div class="input-group">
+                <div class="input-group">
                     @csrf
                     <select name="id" class="form-select mb-4 mt-4" aria-label="Default select example">
                         <option selected>カテゴリーで検索</option>
@@ -17,9 +17,8 @@
                     <span class="input-group-btn mt-4">
                     <button class="btn btn-primary" type="submit">検索</button>
                     </span>
-              </div>
+                </div>
             </form>
-
             @if (isset($params))
             <div class="accordion mb-4" id="accordionExample">
                 <div class="accordion-item">
@@ -30,7 +29,7 @@
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                         <div class="accordion-body bg-white">
-                          {{$params->content}}
+                            {{$params->content}}
                         </div>
                     </div>
                 </div>
@@ -43,26 +42,26 @@
                         <dd class="h5">{{$category->title}}</dd>
                     </dl>
                     <div class="text-right mb-2">いいね！
-                      <span class="badge badge-pill badge-primary">{{$category->favorite_users->count() }}</span>
+                        <span class="badge badge-pill badge-primary">{{$category->favorite_users->count() }}</span>
                     </div>
                     <div class="d-flex justify-content-between align-items-end">
-                      <p class="mb-0 h6 text-black-50">{{$category->user->name}}</p>
-                      <p class="text-right"><time datetime="{{$category->created_at}}">{{date('Y年m月d日' , strtotime($category->created_at))}}</time></p>
+                        <p class="mb-0 h6 text-black-50">{{$category->user->name}}</p>
+                        <p class="text-right"><time datetime="{{$category->created_at}}">{{date('Y年m月d日' , strtotime($category->created_at))}}</time></p>
                     </div>
-                    </a>
-                    <div class="text-right mb-3 mr-3">
-                      @if (Auth::id() != $category->user->id)
-                      @if (Auth::user()->is_favorite($category->id))
-                            {!! Form::open(['route' => ['favorites.unfavorite', $category->id], 'method' => 'delete']) !!}
-                                {!! Form::submit('いいね！', ['class' => "button btn btn-primary"]) !!}
-                            {!! Form::close() !!}
-                      @else
-                            {!! Form::open(['route' => ['favorites.favorite', $category->id]]) !!}
-                                {!! Form::submit('いいね！', ['class' => "button btn btn-secondary"]) !!}
-                            {!! Form::close() !!}
-                      @endif
-                      @endif
-                    </div>
+                </a>
+                <div class="text-right mb-3 mr-3">
+                    @if (Auth::id() != $category->user->id)
+                    @if (Auth::user()->is_favorite($category->id))
+                        {!! Form::open(['route' => ['favorites.unfavorite', $category->id], 'method' => 'delete']) !!}
+                            {!! Form::submit('いいね！', ['class' => "button btn btn-primary"]) !!}
+                        {!! Form::close() !!}
+                    @else
+                        {!! Form::open(['route' => ['favorites.favorite', $category->id]]) !!}
+                            {!! Form::submit('いいね！', ['class' => "button btn btn-secondary"]) !!}
+                        {!! Form::close() !!}
+                    @endif
+                    @endif
+                </div>
             </div>
             @endforeach
             <div class="d-frex mt-4">
@@ -79,27 +78,26 @@
                         <dd class="h5">{{$category->title}}</dd>
                     </dl>
                     <div class="text-right mb-2">いいね！
-                      <span class="badge badge-pill badge-primary">{{$category->favorite_users->count() }}</span>
+                        <span class="badge badge-pill badge-primary">{{$category->favorite_users->count() }}</span>
                     </div>
                     <div class="d-flex justify-content-between align-items-end">
                         <p class="mb-0 h6 text-black-50 ">{{$category->user->name}}</p>
                         <p class="text-right"><time datetime="{{$category->created_at}}">{{date('Y年m月d日' , strtotime($category->created_at))}}</time></p>
                     </div>
                 </a>
-              <div class="text-right mb-3 mr-3">
-                @if (Auth::id() != $category->user->id)
-                    @if (Auth::user()->is_favorite($category->id))
-                        {!! Form::open(['route' => ['favorites.unfavorite', $category->id], 'method' => 'delete']) !!}
-                            {!! Form::submit('いいね！', ['class' => "button btn btn-primary"]) !!}
-                        {!! Form::close() !!}
-                    @else
-                        {!! Form::open(['route' => ['favorites.favorite', $category->id]]) !!}
-                            {!! Form::submit('いいね！', ['class' => "button btn btn-secondary"]) !!}
-                        {!! Form::close() !!}
+                <div class="text-right mb-3 mr-3">
+                    @if (Auth::id() != $category->user->id)
+                        @if (Auth::user()->is_favorite($category->id))
+                            {!! Form::open(['route' => ['favorites.unfavorite', $category->id], 'method' => 'delete']) !!}
+                                {!! Form::submit('いいね！', ['class' => "button btn btn-primary"]) !!}
+                            {!! Form::close() !!}
+                        @else
+                            {!! Form::open(['route' => ['favorites.favorite', $category->id]]) !!}
+                                {!! Form::submit('いいね！', ['class' => "button btn btn-secondary"]) !!}
+                            {!! Form::close() !!}
+                        @endif
                     @endif
-                @endif
-              </div>
-
+                </div>
             </div>
             @endforeach
             @endforeach
