@@ -37,7 +37,7 @@ final class Versions
   'doctrine/cache' => '1.10.2@13e3381b25847283a91948d04640543941309727',
   'doctrine/dbal' => '3.0.0@ee6d1260d5cc20ec506455a585945d7bdb98662c',
   'doctrine/event-manager' => '1.1.1@41370af6a30faa9dc0368c4a6814d596e81aba7f',
-  '__root__' => 'dev-master@82fb06b3bcbacfba5102c88aeb9644d5f69cc150',
+  '__root__' => 'dev-master@4818605f5a8dee9610129876968f5d1f9af07441',
 );
 
     private function __construct()
