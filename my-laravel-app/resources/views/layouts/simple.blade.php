@@ -8,6 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>My Supplement</title>
+    <meta name="description" content="お気に入りのサプリメントを投稿できるアプリです。お気に入りのプロテインやサプリメントをシェアしよう。" />
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
