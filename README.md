@@ -32,4 +32,4 @@ https://mysupplement.herokuapp.com/<br>[ゲストで始める]ボタンからゲ
 - 検索機能
 
 ## About me
-2020年1月よWebエンジニアを目指して勉強中です。
+2020年1月よりWebエンジニアを目指して勉強中です。
