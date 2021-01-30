@@ -1,6 +1,6 @@
-## アプリ名
+# My Supplement
 
-My Supplement
+![mysupplement herokuapp com_(Laptop with MDPI screen)](https://user-images.githubusercontent.com/72999805/106341101-66642400-62df-11eb-82b5-484716c6ebdb.png)
 
 ## 概要
 
