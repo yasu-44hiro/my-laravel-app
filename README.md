@@ -1,10 +1,10 @@
 # My Supplement
 
-![mysupplement herokuapp com_(Laptop with MDPI screen)](https://user-images.githubusercontent.com/72999805/106341101-66642400-62df-11eb-82b5-484716c6ebdb.png)
+![mysupplement herokuapp com_(Laptop with MDPI screen) (1)](https://user-images.githubusercontent.com/72999805/106341328-32d5c980-62e0-11eb-9479-85178fed5425.png)
 
 ## 概要
 
-「お気に入りのサプリメントをシェアしよう」  好きなプロテインやサプリメントを投稿、閲覧できるサービスです。
+「お気に入りのサプリメントをシェアしよう」<br>好きなプロテインやサプリメントを投稿、閲覧できるサービスです。
 
 ## URL
 
