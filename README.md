@@ -8,7 +8,7 @@
 
 ## URL
 
-https://mysupplement.herokuapp.com/<br>ゲストで始める]ボタンからゲストユーザーとしてログインできます。
+https://mysupplement.herokuapp.com/<br>[ゲストで始める]ボタンからゲストユーザーとしてログインできます。
 
 ## 制作の背景
 
